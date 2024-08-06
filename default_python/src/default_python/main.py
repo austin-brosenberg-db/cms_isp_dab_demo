@@ -10,13 +10,21 @@ def get_taxis(spark: SparkSession) -> DataFrame:
 # See https://docs.databricks.com/dev-tools/databricks-connect.html.
 def get_spark() -> SparkSession:
   try:
+    # from databricks.connect import DatabricksSession
+    # spark = DatabricksSession.builder.remote(
+    #   host       = f"https://e2-demo-field-eng.cloud.databricks.com/",
+    #   token      = os.environ['DATABRICKS_PAT'],
+    #   cluster_id = "0730-180525-bdpqfev2"
+    # ).getOrCreate()
     from databricks.connect import DatabricksSession
+    from databricks.sdk.core import Config
 
-    spark = DatabricksSession.builder.remote(
+    config = Config(
       host       = f"https://e2-demo-field-eng.cloud.databricks.com/",
       token      = os.environ['DATABRICKS_PAT'],
       cluster_id = "0730-180525-bdpqfev2"
-    ).getOrCreate()
+    )
+    spark = DatabricksSession.builder.sdkConfig(config).getOrCreate()
   except ImportError:
     return SparkSession.builder.getOrCreate()
 
