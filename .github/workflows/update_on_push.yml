@@ -6,6 +6,9 @@ defaults:
   run:
     working-directory: ./default_python/
 
+env:
+  DATABRICKS_PAT: ${{ secrets.DATABRICKS_PAT }}
+
 jobs:
   unit_tests:
     runs-on: ubuntu-latest
