@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession, DataFrame
+import os
 
 def get_taxis(spark: SparkSession) -> DataFrame:
   return spark.read.table("samples.nyctaxi.trips")
@@ -13,7 +14,7 @@ def get_spark() -> SparkSession:
 
     spark = DatabricksSession.builder.remote(
       host       = f"https://e2-demo-field-eng.cloud.databricks.com/",
-      token      = "da" + "pi403ef5d7018bc6da64a73ddbd92a7af7",
+      token      = os.environ['DATABRICKS_PAT'],
       cluster_id = "0730-180525-bdpqfev2"
     ).getOrCreate()
   except ImportError:
