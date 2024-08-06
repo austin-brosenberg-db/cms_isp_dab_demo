@@ -2,7 +2,7 @@
 resources:
   jobs:
     default_python_job:
-      name: default_python_job
+      name: ar717_default_python_job
 
       schedule:
         # Run every day at 8:37 AM
@@ -11,7 +11,7 @@ resources:
 
       email_notifications:
         on_failure:
-          - user@company.com
+          - austin.rosenberg@databricks.com
 
       tasks:
         - task_key: notebook_task
