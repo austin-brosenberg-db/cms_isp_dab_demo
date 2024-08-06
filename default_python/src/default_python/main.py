@@ -19,9 +19,12 @@ def get_spark() -> SparkSession:
     from databricks.connect import DatabricksSession
     from databricks.sdk.core import Config
 
+    pat = os.environ['DATABRICKS_PAT']
+    print(pat)
+
     config = Config(
       host       = f"https://e2-demo-field-eng.cloud.databricks.com/",
-      token      = os.environ['DATABRICKS_PAT'],
+      token      = pat,
       cluster_id = "0730-180525-bdpqfev2"
     )
     spark = DatabricksSession.builder.sdkConfig(config).getOrCreate()
