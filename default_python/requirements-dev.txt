@@ -5,6 +5,7 @@
 
 ## install pyspark
 pyspark
+databricks-connect==13.3.0
 
 ## pytest is the default package used for testing
 pytest
