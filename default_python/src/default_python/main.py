@@ -20,7 +20,8 @@ def get_spark() -> SparkSession:
     from databricks.sdk.core import Config
 
     pat = os.environ['DATABRICKS_PAT']
-    print(pat)
+    print("this is the pat " + pat)
+    print("this is a test " + os.environ['TEST'])
 
     config = Config(
       host       = f"https://e2-demo-field-eng.cloud.databricks.com/",

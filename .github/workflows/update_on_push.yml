@@ -8,6 +8,7 @@ defaults:
 
 env:
   DATABRICKS_PAT: ${{ secrets.DATABRICKS_PAT }}
+  TEST: blahblahbalh
 
 jobs:
   unit_tests:
