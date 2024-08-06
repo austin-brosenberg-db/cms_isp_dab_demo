@@ -19,7 +19,7 @@ setup(
     # to ensure that changes to wheel package are picked up when used on all-purpose clusters
     version=default_python.__version__ + "+" + datetime.datetime.utcnow().strftime("%Y%m%d.%H%M%S"),
     url="https://databricks.com",
-    author="user@company.com",
+    author="austin.rosenberg@databricks.com",
     description="wheel file based on default_python/src",
     packages=find_packages(where='./src'),
     package_dir={'': 'src'},

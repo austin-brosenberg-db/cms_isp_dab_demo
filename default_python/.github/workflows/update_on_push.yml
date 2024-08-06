@@ -1,0 +1,40 @@
+name: cms isp dab demo
+on:
+  push
+
+defaults:
+  run:
+    working-directory: ./default_python/
+
+jobs:
+  unit_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+            pip install -r ../test-requirements.txt
+      - name: Run tests with pytest
+        run: |
+            pytest
+  
+  integration_test:
+    needs: unit_tests
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - uses: databricks/setup-cli@main
+      - name: Validate Bundle For test
+        id: validate
+        run: |
+          databricks bundle validate -t dev -p DEFAULT
+      - name: Deploy Bundle to dev
+        id: deploy
+        run: |
+          databricks bundle deploy -t dev -p DEFAULT
