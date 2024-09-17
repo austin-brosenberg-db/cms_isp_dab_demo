@@ -13,7 +13,7 @@ env:
 jobs:
   unit_tests:
     environment: main
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -29,7 +29,7 @@ jobs:
   
   integration_test:
     needs: unit_tests
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
