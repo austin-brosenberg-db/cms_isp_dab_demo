@@ -26,9 +26,9 @@ def get_spark() -> SparkSession:
   config = Config(
     host       = f"https://e2-demo-field-eng.cloud.databricks.com/",
     token      = pat,
-    cluster_id = "c34b133fe1869017"
+    cluster_id = "0917-140040-lfy5g5bz"
   )
-  spark = DatabricksSession.builder.sdkConfig(config).getOrCreate()
+  return DatabricksSession.builder.sdkConfig(config).getOrCreate()
 # except ImportError:
 #   return SparkSession.builder.getOrCreate()
 
