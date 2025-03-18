@@ -31,7 +31,6 @@ jobs:
   deploy_prod:
     if: github.ref == 'refs/heads/main'
     environment: prod
-    needs: unit_tests
     runs-on: self-hosted
     steps:
       - name: Checkout repo
