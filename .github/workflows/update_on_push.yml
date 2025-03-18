@@ -22,11 +22,11 @@ jobs:
       - name: Validate Bundle For test
         id: validate
         run: |
-          databricks bundle validate -t dev -p DEFAULT
+          databricks bundle validate -t dev
       - name: Deploy Bundle to dev
         id: deploy
         run: |
-          databricks bundle deploy -t dev -p DEFAULT
+          databricks bundle deploy -t dev
   
   deploy_prod:
     if: github.ref == 'refs/heads/main'
@@ -39,8 +39,8 @@ jobs:
       - name: Validate Bundle For prod
         id: validate
         run: |
-          databricks bundle validate -t prod -p DEFAULT
+          databricks bundle validate -t prod
       - name: Deploy Bundle to prod
         id: deploy
         run: |
-          databricks bundle deploy -t prod -p DEFAULT
+          databricks bundle deploy -t prod
